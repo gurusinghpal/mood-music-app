@@ -98,3 +98,20 @@
         font-size: 0.9rem;
     }
 }
+
+/* src/components/Playlist.css */
+.refresh-button {
+    background-color: #ff9800; /* Button color */
+    color: #fff; /* Text color */
+    border: none;
+    border-radius: 8px;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 1rem;
+    margin-bottom: 20px; /* Spacing below the button */
+    transition: background-color 0.3s ease;
+}
+
+.refresh-button:hover {
+    background-color: #ff5722; /* Darker shade on hover */
+}

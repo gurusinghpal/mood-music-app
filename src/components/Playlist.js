@@ -7,14 +7,23 @@ const Playlist = ({ mood, language }) => {
     const [tracks, setTracks] = useState([]);
 
     useEffect(() => {
+        fetchRecommendations(); // Fetch recommendations initially
+    }, [mood, language]);
+
+    const fetchRecommendations = () => {
         if (mood && language) {
             getRecommendations(mood, language).then((data) => setTracks(data));
         }
-    }, [mood, language]);
+    };
+
+    const handleRefresh = () => {
+        fetchRecommendations(); // Refresh recommendations
+    };
 
     return (
         <div className="playlist-container">
             <h2 className="playlist-title">Recommended Tracks for "{mood}" Mood</h2>
+            <button onClick={handleRefresh} className="refresh-button">Refresh Songs</button>
             <div className="track-list">
                 {tracks.map(track => (
                     <div key={track.id} className="track-card">
