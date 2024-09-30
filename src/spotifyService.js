@@ -23,30 +23,38 @@ const getAccessToken = async () => {
   }
 };
 
+// Separate seed genres for Hindi and English
+const seedGenresHindi = {
+  happy: 'indian, happy',
+  sad: 'indian, heartbroken',
+  relaxed: 'indian, romance',
+  energetic: 'indian, party'
+};
+
+const seedGenresEnglish = {
+  happy: 'happy',
+  sad: 'sad',
+  relaxed: 'chill',
+  energetic: 'party'
+};
+
 // Function to get song recommendations from Spotify API based on mood and language
 const getRecommendations = async (mood, language) => {
   const accessToken = await getAccessToken();
   if (!accessToken) return [];
 
   const recommendationsUrl = 'https://api.spotify.com/v1/recommendations';
-  
-  const seedGenres = {
-    happy: 'happy',
-    sad: 'sad',
-    relaxed: 'chill',
-    energetic: 'party'
-  };
 
   // Add support for language mapping to a specific market (region)
   const marketMapping = {
     en: 'US',  // English songs popular in the US
-    hi: 'IN',  // Hindi songs popular in India
-    es: 'ES'   // Spanish songs popular in Spain
+    hi: 'IN'   // Hindi songs popular in India
   };
 
-  // Get seed genre based on mood
+  // Get seed genres based on language
+  const seedGenres = language === 'hi' ? seedGenresHindi : seedGenresEnglish;
   const seedGenre = seedGenres[mood] || 'pop'; // Default to 'pop' if mood is not recognized
-  const market = marketMapping[language] || 'IN'; // Default to 'US' if language is not recognized
+  const market = marketMapping[language] || 'US'; // Default to 'US' if language is not recognized
 
   try {
     const response = await axios.get(recommendationsUrl, {
