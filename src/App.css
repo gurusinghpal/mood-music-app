@@ -33,7 +33,7 @@ body, html {
 /* Header Title */
 .app-header h1 {
   margin: 0;
-  font-size: 2.5rem; /* Slightly larger */
+  font-size: 2.33rem; /* Slightly larger */
   color: #ff9800; /* Text color */
   text-align: center;
   text-transform: uppercase; /* Make text uppercase */
