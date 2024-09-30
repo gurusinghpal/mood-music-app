@@ -27,8 +27,8 @@ const Playlist = ({ mood, language }) => {
             <div className="track-list">
                 {tracks.map(track => (
                     <div key={track.id} className="track-card">
-                        <a href={track.external_urls.spotify} target="_blank" rel="noopener noreferrer" className="track-link">
-                            <img src={track.image} alt={track.name} className="track-image" />
+                        <a href={`spotify:track:${track.id}`} target="_blank" rel="noopener noreferrer" className="track-link">
+                        <img src={track.image} alt={track.name} className="track-image" />
                             <div className="track-info">
                                 <p className="track-name">{track.name}</p>
                                 <p className="track-artist">by {track.artists}</p>
