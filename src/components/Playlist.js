@@ -2,6 +2,8 @@
 import React, { useEffect, useState } from 'react';
 import './Playlist.css'; // Import the CSS file for styling
 import { getRecommendations } from '../spotifyService';
+import MusicSpectrum from './MusicSpectrum'; // Import the new MusicSpectrum component
+
 
 const Playlist = ({ mood, language }) => {
     const [tracks, setTracks] = useState([]);
@@ -29,6 +31,7 @@ const Playlist = ({ mood, language }) => {
                     <div key={track.id} className="track-card">
                         <a href={`spotify:track:${track.id}`} target="_blank" rel="noopener noreferrer" className="track-link">
                         <img src={track.image} alt={track.name} className="track-image" />
+                        <MusicSpectrum /> {/* Add the Music Spectrum here */}
                             <div className="track-info">
                                 <p className="track-name">{track.name}</p>
                                 <p className="track-artist">by {track.artists}</p>
