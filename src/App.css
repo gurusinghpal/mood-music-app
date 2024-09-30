@@ -33,9 +33,11 @@ body, html {
 /* Header Title */
 .app-header h1 {
   margin: 0;
-  font-size: 2.33rem; /* Slightly larger */
+  font-size: 5vw; /* Use viewport width for responsiveness */
+  max-font-size: 2.33rem; /* Set a maximum font size */
   color: #ff9800; /* Text color */
-  text-align: center;
+  text-align: left;
+  padding-right: 100px;
   text-transform: uppercase; /* Make text uppercase */
   letter-spacing: 1px; /* Increase letter spacing for effect */
   background: linear-gradient(90deg, #ff9800, #ff5722); /* Gradient background */
@@ -44,6 +46,26 @@ body, html {
   animation: subtleGlow 1.5s infinite alternate; /* Subtle glowing effect */
 }
 
+/* Media Queries for finer control on different screen sizes */
+@media (max-width: 1200px) {
+  .app-header h1 {
+    font-size: 4vw; /* Adjust for medium screens */
+  }
+}
+
+@media (max-width: 800px) {
+  .app-header h1 {
+    font-size: 6vw; /* Adjust for small screens */
+    padding-right: 50px; /* Reduce padding on smaller screens */
+  }
+}
+
+@media (max-width: 500px) {
+  .app-header h1 {
+    font-size: 8vw; /* Further adjust for extra small screens */
+    padding-right: 20px; /* Further reduce padding */
+  }
+}
 /* Keyframes for subtle glow effect */
 @keyframes subtleGlow {
   0% {
