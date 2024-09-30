@@ -1,4 +1,6 @@
+// src/components/Playlist.js
 import React, { useEffect, useState } from 'react';
+import './Playlist.css'; // Import the CSS file for styling
 import { getRecommendations } from '../spotifyService';
 
 const Playlist = ({ mood, language }) => {
@@ -11,18 +13,21 @@ const Playlist = ({ mood, language }) => {
     }, [mood, language]);
 
     return (
-        <div>
-            <h2>Recommended Tracks for {mood}</h2>
-            <ul>
+        <div className="playlist-container">
+            <h2 className="playlist-title">Recommended Tracks for "{mood}" Mood</h2>
+            <div className="track-list">
                 {tracks.map(track => (
-                    <li key={track.id}>
-                        <a href={track.external_urls.spotify} target="_blank" rel="noopener noreferrer">
-                            {track.name} by {track.artists}
+                    <div key={track.id} className="track-card">
+                        <a href={track.external_urls.spotify} target="_blank" rel="noopener noreferrer" className="track-link">
+                            <img src={track.image} alt={track.name} className="track-image" />
+                            <div className="track-info">
+                                <p className="track-name">{track.name}</p>
+                                <p className="track-artist">by {track.artists}</p>
+                            </div>
                         </a>
-                        <img src={track.image} alt={track.name} width="100" />
-                    </li>
+                    </div>
                 ))}
-            </ul>
+            </div>
         </div>
     );
 };

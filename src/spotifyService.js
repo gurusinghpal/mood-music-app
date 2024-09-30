@@ -27,7 +27,7 @@ const getAccessToken = async () => {
 const seedGenresHindi = {
   happy: 'indian, happy',
   sad: 'indian, heartbroken',
-  relaxed: 'indian, romance',
+  relaxed: 'indian, chill',
   energetic: 'indian, party'
 };
 
